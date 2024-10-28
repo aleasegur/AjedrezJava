@@ -46,36 +46,37 @@ public class JuegoAjedrez {
         return res; // Movimiento no válido
     }
 
-    void inicializarPiezas() {
-        // Inicializa las piezas blancas
-        tablero.setPieza(1, 0, new Torre("blanco"));
-        tablero.setPieza(1, 1, new Caballo("blanco"));
-        tablero.setPieza(1, 2, new Alfil("blanco"));
-        tablero.setPieza(1, 3, new Reina("blanco"));
-        tablero.setPieza(1, 4, new Rey("blanco"));
-        tablero.setPieza(1, 5, new Alfil("blanco"));
-        tablero.setPieza(1, 6, new Caballo("blanco"));
-        tablero.setPieza(1, 7, new Torre("blanco"));
+    public void inicializarPiezas() {
+        // Posiciona las piezas negras en la fila 0 (torre, caballo, alfil, reina, rey, alfil, caballo, torre)
+        tablero.setPieza(0, 0, new Torre("negro"));
+        tablero.setPieza(0, 1, new Caballo("negro"));
+        tablero.setPieza(0, 2, new Alfil("negro"));
+        tablero.setPieza(0, 3, new Reina("negro"));
+        tablero.setPieza(0, 4, new Rey("negro"));
+        tablero.setPieza(0, 5, new Alfil("negro"));
+        tablero.setPieza(0, 6, new Caballo("negro"));
+        tablero.setPieza(0, 7, new Torre("negro"));
 
-        // Inicializa los peones blancos
-        for (int col = 0; col < 8; col++) {
-            tablero.setPieza(0, col, new Peon("blanco"));
+        // Posiciona los peones negros en la fila 1
+        for (int i = 0; i < 8; i++) {
+            tablero.setPieza(1, i, new Peon("negro"));
         }
 
-        // Inicializa las piezas negras (similar a las blancas)
-        tablero.setPieza(6, 0, new Torre("negro"));
-        tablero.setPieza(6, 1, new Caballo("negro"));
-        tablero.setPieza(6, 2, new Alfil("negro"));
-        tablero.setPieza(6, 3, new Reina("negro"));
-        tablero.setPieza(6, 4, new Rey("negro"));
-        tablero.setPieza(6, 5, new Alfil("negro"));
-        tablero.setPieza(6, 6, new Caballo("negro"));
-        tablero.setPieza(6, 7, new Torre("negro"));
+        // Posiciona las piezas blancas en la fila 7 (torre, caballo, alfil, reina, rey, alfil, caballo, torre)
+        tablero.setPieza(7, 0, new Torre("blanco"));
+        tablero.setPieza(7, 1, new Caballo("blanco"));
+        tablero.setPieza(7, 2, new Alfil("blanco"));
+        tablero.setPieza(7, 3, new Reina("blanco"));
+        tablero.setPieza(7, 4, new Rey("blanco"));
+        tablero.setPieza(7, 5, new Alfil("blanco"));
+        tablero.setPieza(7, 6, new Caballo("blanco"));
+        tablero.setPieza(7, 7, new Torre("blanco"));
 
-        // Inicializa los peones negros
-        for (int col = 0; col < 8; col++) {
-            tablero.setPieza(7, col, new Peon("negro"));
+        // Posiciona los peones blancos en la fila 6
+        for (int i = 0; i < 8; i++) {
+            tablero.setPieza(6, i, new Peon("blanco"));
         }
     }
+
 
 }
