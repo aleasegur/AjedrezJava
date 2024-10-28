@@ -7,29 +7,29 @@ public class Tablero {
     /*Inicializa las posiciones iniciales de todas las piezas en el tablero*/
     void inicializarTablero() {
         // Coloca las piezas negras
-        casilla[0][0] = new Torre("black");
-        casilla[0][1] = new Caballo("black");
-        casilla[0][2] = new Alfil("black");
-        casilla[0][3] = new Reina("black");
-        casilla[0][4] = new Rey("black");
-        casilla[0][5] = new Alfil("black");
-        casilla[0][6] = new Caballo("black");
-        casilla[0][7] = new Torre("black");
+        casilla[0][0] = new Torre("negro");
+        casilla[0][1] = new Caballo("negro");
+        casilla[0][2] = new Alfil("negro");
+        casilla[0][3] = new Reina("negro");
+        casilla[0][4] = new Rey("negro");
+        casilla[0][5] = new Alfil("negro");
+        casilla[0][6] = new Caballo("negro");
+        casilla[0][7] = new Torre("negro");
 
         for (int i = 0; i < 8; i++) {
-            casilla[1][i] = new Peon("black"); // Peones negros
-            casilla[6][i] = new Peon("white"); // Peones blancos
+            casilla[1][i] = new Peon("negro"); // Peones negros
+            casilla[6][i] = new Peon("blanco"); // Peones blancos
         }
 
         // Coloca las piezas blancas
-        casilla[7][0] = new Torre("white");
-        casilla[7][1] = new Caballo("white");
-        casilla[7][2] = new Alfil("white");
-        casilla[7][3] = new Reina("white");
-        casilla[7][4] = new Rey("white");
-        casilla[7][5] = new Alfil("white");
-        casilla[7][6] = new Caballo("white");
-        casilla[7][7] = new Torre("white");
+        casilla[7][0] = new Torre("blanco");
+        casilla[7][1] = new Caballo("blanco");
+        casilla[7][2] = new Alfil("blanco");
+        casilla[7][3] = new Reina("blanco");
+        casilla[7][4] = new Rey("blanco");
+        casilla[7][5] = new Alfil("blanco");
+        casilla[7][6] = new Caballo("blanco");
+        casilla[7][7] = new Torre("blanco");
     }
     /*Verifica si una posición está dentro de los límites del tablero.*/
     boolean dentroDelTablero(int x, int y){
@@ -65,6 +65,8 @@ public class Tablero {
         return res; // Movimiento no válido o posición de destino ocupada por pieza del mismo color
     }
 
+
+
     /*Devuelve la pieza en una posición específica del tablero.*/
 
     public Pieza getPieza(int x, int y){
@@ -74,6 +76,7 @@ public class Tablero {
         }
         return pieza;
     }
+
     public void setPieza(int fila, int col, Pieza pieza) {
         casilla[fila][col] = pieza; // Coloca la pieza en la posición especificada
     }

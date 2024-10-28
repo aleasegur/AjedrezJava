@@ -17,7 +17,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 480, 480); // Puedes ajustar el tamaño según tus necesidades
 
         // Configura el título de la ventana
-        primaryStage.setTitle("Juego de Ajedrez");
+        primaryStage.setTitle("Ajedrez");
         primaryStage.setScene(scene);
         primaryStage.show(); // Muestra la ventana
     }

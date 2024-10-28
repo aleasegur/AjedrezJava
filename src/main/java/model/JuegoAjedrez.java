@@ -7,11 +7,17 @@ public class JuegoAjedrez {
     public JuegoAjedrez() {
         tablero = new Tablero();
         turno = "blanco";
+        inicializarPiezas();
+    }
+
+    public void reiniciar() {
+        tablero = new Tablero(); // Reinicia el tablero
+        inicializarPiezas(); // Coloca las piezas en sus posiciones iniciales
     }
 
     /*Metodo que cambia el turno del jugador actual*/
     void cambiarTurno() {
-        turno = turno.equals("white") ? "black" : "white";
+        turno = turno.equals("blanco") ? "negro" : "blanco";
     }
     /*Devuelve el color del jugador que tiene el turno actual.*/
     public String getTurno() {
@@ -42,33 +48,33 @@ public class JuegoAjedrez {
 
     void inicializarPiezas() {
         // Inicializa las piezas blancas
-        tablero.setPieza(1, 0, new Torre("white"));
-        tablero.setPieza(1, 1, new Caballo("white"));
-        tablero.setPieza(1, 2, new Alfil("white"));
-        tablero.setPieza(1, 3, new Reina("white"));
-        tablero.setPieza(1, 4, new Rey("white"));
-        tablero.setPieza(1, 5, new Alfil("white"));
-        tablero.setPieza(1, 6, new Caballo("white"));
-        tablero.setPieza(1, 7, new Torre("white"));
+        tablero.setPieza(1, 0, new Torre("blanco"));
+        tablero.setPieza(1, 1, new Caballo("blanco"));
+        tablero.setPieza(1, 2, new Alfil("blanco"));
+        tablero.setPieza(1, 3, new Reina("blanco"));
+        tablero.setPieza(1, 4, new Rey("blanco"));
+        tablero.setPieza(1, 5, new Alfil("blanco"));
+        tablero.setPieza(1, 6, new Caballo("blanco"));
+        tablero.setPieza(1, 7, new Torre("blanco"));
 
         // Inicializa los peones blancos
         for (int col = 0; col < 8; col++) {
-            tablero.setPieza(0, col, new Peon("white"));
+            tablero.setPieza(0, col, new Peon("blanco"));
         }
 
         // Inicializa las piezas negras (similar a las blancas)
-        tablero.setPieza(6, 0, new Torre("black"));
-        tablero.setPieza(6, 1, new Caballo("black"));
-        tablero.setPieza(6, 2, new Alfil("black"));
-        tablero.setPieza(6, 3, new Reina("black"));
-        tablero.setPieza(6, 4, new Rey("black"));
-        tablero.setPieza(6, 5, new Alfil("black"));
-        tablero.setPieza(6, 6, new Caballo("black"));
-        tablero.setPieza(6, 7, new Torre("black"));
+        tablero.setPieza(6, 0, new Torre("negro"));
+        tablero.setPieza(6, 1, new Caballo("negro"));
+        tablero.setPieza(6, 2, new Alfil("negro"));
+        tablero.setPieza(6, 3, new Reina("negro"));
+        tablero.setPieza(6, 4, new Rey("negro"));
+        tablero.setPieza(6, 5, new Alfil("negro"));
+        tablero.setPieza(6, 6, new Caballo("negro"));
+        tablero.setPieza(6, 7, new Torre("negro"));
 
         // Inicializa los peones negros
         for (int col = 0; col < 8; col++) {
-            tablero.setPieza(7, col, new Peon("black"));
+            tablero.setPieza(7, col, new Peon("negro"));
         }
     }
 
