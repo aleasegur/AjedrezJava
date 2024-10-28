@@ -8,8 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.JuegoAjedrez;
 import model.Pieza;
-
-import java.io.InputStream;
+/*El controlador contiene la lógica que conecta la interfaz de usuario con el modelo del ajedrez .*/
 
 public class Controller {
     private Pieza piezaSeleccionada = null;
