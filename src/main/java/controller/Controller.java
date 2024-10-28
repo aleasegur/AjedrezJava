@@ -12,7 +12,9 @@ import model.Pieza;
 import java.io.InputStream;
 
 public class Controller {
-
+    private Pieza piezaSeleccionada = null;
+    private int filaSeleccionada = -1;
+    private int colSeleccionada = -1;
     @FXML
     private GridPane gridPane; // Referencia al GridPane definido en FXML
 
@@ -44,27 +46,41 @@ public class Controller {
     }
 
     public void manejarMovimiento(int fila, int col) {
-        System.out.println("Movimiento en fila: " + fila + ", columna: " + col);
-        // Aquí iría la lógica para mover piezas en el tablero
+        Pieza piezaActual = juego.getTablero().getPieza(fila, col); // Obtiene la pieza en la posición actual
+
+        // Si no hay ninguna pieza seleccionada y hay una pieza en la nueva posición
+        if (piezaSeleccionada == null && piezaActual != null) {
+            piezaSeleccionada = piezaActual; // Selecciona la pieza
+            filaSeleccionada = fila;
+            colSeleccionada = col;
+        } else if (piezaSeleccionada != null) { // Si ya hay una pieza seleccionada
+            // Intenta mover la pieza a la nueva posición
+            if (juego.getTablero().puedeMover(piezaSeleccionada, fila, col)) {
+                // Realiza el movimiento
+                juego.getTablero().moverPieza(filaSeleccionada, colSeleccionada, fila, col);
+                // Reinicia la selección
+                piezaSeleccionada = null;
+                filaSeleccionada = -1;
+                colSeleccionada = -1;
+            } else {
+                // Si no puede mover, puedes deseleccionar la pieza
+                piezaSeleccionada = null;
+                filaSeleccionada = -1;
+                colSeleccionada = -1;
+            }
+            dibujarTablero(); // Redibuja el tablero después del movimiento
+        }
     }
 
     public void dibujarPieza(int fila, int col) {
-        Pieza pieza = juego.getTablero().getPieza(fila, col); // Obtiene la pieza en la posición específica
-
+        Pieza pieza = juego.getTablero().getPieza(fila, col);
         if (pieza != null) {
-            String imagenPath = obtenerNombreArchivo(pieza); // Ruta de la imagen de la pieza
-            InputStream inputStream = getClass().getResourceAsStream(imagenPath);
-
-            if (inputStream != null) {
-                Image imagen = new Image(inputStream);
-                ImageView imageView = new ImageView(imagen);
-                imageView.setFitWidth(60);
-                imageView.setFitHeight(60);
-
-                gridPane.add(imageView, col, fila); // Coloca la imagen en la posición adecuada
-            } else {
-                System.out.println("No se encontró la imagen en la ruta: " + imagenPath);
-            }
+            String imagenPath = obtenerNombreArchivo(pieza);
+            Image image = new Image(getClass().getResourceAsStream(imagenPath));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(60);
+            imageView.setFitWidth(60);
+            gridPane.add(imageView, col, fila);
         }
     }
 

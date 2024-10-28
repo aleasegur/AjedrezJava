@@ -29,21 +29,20 @@ public class JuegoAjedrez {
         return tablero;
     }
 
-    /*Realiza un movimiento de una pieza en el tablero*/
     public boolean moverPieza(int x1, int y1, int x2, int y2) {
-        boolean res = false, movimientoValido;
+        boolean res = false;
         // Verifica si el movimiento es válido
         Pieza pieza = tablero.getPieza(x1, y1);
         if (pieza != null && pieza.getColor().equals(turno)) {
             // Intenta mover la pieza
-            movimientoValido = tablero.moverPieza(x1, y1, x2, y2);
+            boolean movimientoValido = tablero.moverPieza(x1, y1, x2, y2);
             if (movimientoValido) {
                 // Cambia el turno si el movimiento fue exitoso
                 cambiarTurno();
-                res = true;
+                res = true; // Movimiento exitoso
             }
         }
-        return res; // Movimiento no válido
+        return res; // Retorna false si el movimiento no fue válido
     }
 
     public void inicializarPiezas() {

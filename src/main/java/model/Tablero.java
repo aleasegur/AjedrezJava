@@ -31,13 +31,16 @@ public class Tablero {
         casilla[7][6] = new Caballo("blanco");
         casilla[7][7] = new Torre("blanco");
     }
+
     /*Verifica si una posición está dentro de los límites del tablero.*/
-    boolean dentroDelTablero(int x, int y){
-        boolean res=x >= 0 && x < 8 && y >= 0 && y < 8;
+    boolean dentroDelTablero(int x, int y) {
+        boolean res = x >= 0 && x < 8 && y >= 0 && y < 8;
         return res;
     }
 
+
     /*Mueve una pieza de una posición inicial a una posición final si el movimiento es válido.*/
+    /*
     boolean moverPieza(int x1, int y1, int x2, int y2) {
         boolean res=false;
         // Verifica si las coordenadas están dentro de los límites del tablero
@@ -64,21 +67,44 @@ public class Tablero {
         }
         return res; // Movimiento no válido o posición de destino ocupada por pieza del mismo color
     }
+    */
+
+    public boolean moverPieza(int filaOrigen, int colOrigen, int filaDestino, int colDestino) {
+        Pieza pieza = getPieza(filaOrigen, colOrigen);
+        boolean res = false;
+        if (pieza != null && puedeMover(pieza, filaDestino, colDestino)) {
+            // Mueve la pieza
+            setPieza(filaDestino, colDestino, pieza);
+            setPieza(filaOrigen, colOrigen, null);
+            res = true; // Movimiento exitoso
+        }
+        return res; // Movimiento no válido
+    }
+
 
 
 
     /*Devuelve la pieza en una posición específica del tablero.*/
 
-    public Pieza getPieza(int x, int y){
-        Pieza pieza=null;
+    public Pieza getPieza(int x, int y) {
+        Pieza pieza = null;
         if (dentroDelTablero(x, y)) {
-            pieza=casilla[x][y];
+            pieza = casilla[x][y];
         }
         return pieza;
     }
 
     public void setPieza(int fila, int col, Pieza pieza) {
         casilla[fila][col] = pieza; // Coloca la pieza en la posición especificada
+    }
+
+    public boolean puedeMover(Pieza pieza, int filaDestino, int colDestino) {
+        boolean res = true;
+        // Primero, verifica que la posición de destino esté dentro de los límites del tablero
+        if (filaDestino < 0 || filaDestino >= 8 || colDestino < 0 || colDestino >= 8) {
+            res = false;
+        }
+        return res;
     }
 
 
