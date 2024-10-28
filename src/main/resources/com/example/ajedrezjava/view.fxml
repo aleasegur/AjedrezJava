@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.Controller" alignment="CENTER" hgap="0" vgap="0">
+    <!-- Fila superior para el título -->
+    <Label text="Juego de Ajedrez" GridPane.columnSpan="8" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <!-- Tablero de Ajedrez -->
+    <VBox GridPane.rowIndex="1" GridPane.columnSpan="8">
+        <GridPane fx:id="gridPane" alignment="CENTER">
+            <!-- Las casillas del tablero se generarán en el controlador -->
+        </GridPane>
+    </VBox>
+
+    <!-- Información adicional o botones de control pueden ir aquí -->
+    <Button text="Reiniciar Juego" GridPane.rowIndex="2" GridPane.columnSpan="8" onAction="#reiniciarJuego"/>
+</GridPane>
